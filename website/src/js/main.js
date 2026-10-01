@@ -38,7 +38,7 @@ export function setupNavigation() {
 }
 
 // ===== API base URL =====
-const API_BASE = (typeof window !== 'undefined' && window.__API_BASE__) || (import.meta.env?.VITE_API_BASE_URL || 'http://localhost:8000');
+const API_BASE = window.location.hostname === 'localhost' ? 'http://localhost:8000' : '';
 
 // ===== Authentication Logic =====
 export function setupAuth() {

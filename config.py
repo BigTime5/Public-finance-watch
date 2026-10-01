@@ -49,9 +49,13 @@ LOG_PATH   = BASE_DIR / "scraper.log"
 DATABASE_URL = os.environ.get("DATABASE_URL")
 
 # Ensure directories exist
-for _d in [RAW_DIR / "ppra", RAW_DIR / "knbs", RAW_DIR / "oag",
-           RAW_DIR / "cob", RAW_DIR / "treasury", PROC_DIR]:
-    _d.mkdir(parents=True, exist_ok=True)
+try:
+    for _d in [RAW_DIR / "ppra", RAW_DIR / "knbs", RAW_DIR / "oag",
+               RAW_DIR / "cob", RAW_DIR / "treasury", PROC_DIR]:
+        _d.mkdir(parents=True, exist_ok=True)
+except (PermissionError, OSError):
+    pass  # Read-only environments like Vercel don't allow mkdir, which is fine for the API
+
 
 # ─── HTTP Settings ────────────────────────────────────────────────────────────
 REQUEST_TIMEOUT    = 60          # seconds per request

@@ -400,7 +400,8 @@ def generate_dossier(request: Request, supplier_name: str):
     from fastapi.responses import FileResponse
 
     try:
-        pdf_path = build_supplier_dossier(supplier_name, output_dir="reports")
+        output_dir = "/tmp" if os.environ.get("VERCEL") else "reports"
+        pdf_path = build_supplier_dossier(supplier_name, output_dir=output_dir)
         return FileResponse(
             path=pdf_path,
             media_type="application/pdf",
