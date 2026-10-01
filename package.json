@@ -1,0 +1,8 @@
+{
+  "name": "kenya-public-finance-intelligence-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "cd website && npm install && npm run build && cd .. && mkdir -p public && cp -r website/dist/* public/"
+  }
+}
