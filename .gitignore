@@ -1,0 +1,31 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Data files (too large for GitHub)
+data/*.db
+data/*.csv
+data/*.xlsx
+data/raw/
+*.pdf
+*.zip
+*.xlsx
+
+# Node
+website/node_modules/
+website/dist/
+
+# Environment
+.env
+
+# Scratch / temp
+scratch/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,19 @@
+{
+  "name": "kenya-public-finance-intelligence",
+  "version": "1.0.0",
+  "description": "Kenya Public Finance Intelligence Platform - Production Website",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4",
+    "vite": "^5.2.0"
+  },
+  "dependencies": {
+    "@svg-maps/kenya": "^2.0.0"
+  }
+}

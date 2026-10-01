@@ -1,0 +1,6 @@
+﻿id,title,fiscal_year,quarter,government_level,file_url,local_path,scraped_at
+1,Annual County BIRR FY2024/25,2024/25,Annual,county,https://cob.go.ke/wp-content/uploads/2025/09/Annual-County-BIRR-FY2024-25.pdf,,2026-06-12T12:02:08.363485
+2,Annual County BIRR FY2023/24,2023/24,Annual,county,https://cob.go.ke/wp-content/uploads/2024/09/Annual-County-BIRR-FY2023-24.pdf,,2026-06-12T12:02:08.363523
+3,Annual County BIRR FY2022/23,2022/23,Annual,county,https://cob.go.ke/wp-content/uploads/2023/09/Annual-County-BIRR-FY2022-23.pdf,,2026-06-12T12:02:08.363543
+4,County BIRR First Half FY2024/25,2024/25,Half-Year,county,https://kiambu.go.ke/wp-content/uploads/2025/03/CBIRR-2024-25-24.02.2025-DR-25225-b-17-1.pdf,C:\Users\user\Data_Science_Course\kenya_public_finance_intelligence\kenya_public_finance_intelligence\data\raw\cob\cob_county_2024-25_half-year.pdf,2026-06-12T12:02:08.363560
+5,Annual National Govt BIRR FY2024/25,2024/25,Annual,national,https://cob.go.ke/wp-content/uploads/2025/09/Annual-NG-BIRR-FY2024-25.pdf,,2026-06-12T12:02:08.363576

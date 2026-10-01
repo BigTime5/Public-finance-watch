@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply min-h-screen bg-background text-on-background font-body-md;
+  }
+}
+
+@layer utilities {
+  .texture-bg {
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231a3e35' fill-opacity='0.03' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .watermark-bg {
+    background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M50 0 L100 50 L50 100 L0 50 Z" fill="%23e3e2e0" fill-opacity="0.2"/></svg>');
+    background-repeat: repeat;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #f4f3f1; 
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #d3c4b2; 
+    border-radius: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #817566; 
+  }
+
+  .elevation-1 {
+    background-color: #ffffff;
+    border: 1px solid rgba(26, 62, 53, 0.1);
+    box-shadow: none;
+  }
+  
+  .elevation-2 {
+    background-color: #ffffff;
+    border: 1px solid rgba(26, 62, 53, 0.15);
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.05);
+  }
+
+  .soft-shadow {
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.05);
+  }
+  
+  .safe-pb {
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+  }
+
+  .editorial-dropcap::first-letter {
+    font-family: "Source Serif 4", serif;
+    font-size: 4rem;
+    line-height: 1;
+    float: left;
+    margin-right: 0.5rem;
+    margin-top: -0.2rem;
+    color: theme('colors.savannah-green');
+    font-weight: 700;
+  }
+  
+  .icon-fill {
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+}
