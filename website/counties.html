@@ -14,12 +14,12 @@
 
   <!-- Navigation -->
   <header class="bg-savannah-green text-white sticky top-0 z-50">
-    <div class="max-w-[1280px] mx-auto px-8 flex items-center justify-between h-14">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14">
       <a href="./index.html" class="flex items-center gap-2">
         <span class="material-symbols-outlined text-civic-gold">shield</span>
-        <span class="font-headline-md text-[18px] font-bold tracking-tight">Public Finance Watch</span>
+        <span class="font-headline-md text-[16px] sm:text-[18px] font-bold tracking-tight">Public Finance Watch</span>
       </a>
-      <nav class="hidden md:flex items-center gap-6 text-sm font-label-caps tracking-wider">
+      <nav class="hidden md:flex items-center gap-4 lg:gap-6 text-sm font-label-caps tracking-wider">
         <a href="./index.html" class="text-white/80 hover:text-white transition-colors">Dashboard</a>
         <a href="./counties.html" class="text-civic-gold border-b-2 border-civic-gold pb-0.5">Entities</a>
         <a href="./red-flags.html" class="text-white/80 hover:text-white transition-colors">Red Flags</a>
@@ -27,17 +27,31 @@
         <a href="./reports.html" class="text-white/80 hover:text-white transition-colors">Reports</a>
         <a href="./methodology.html" class="text-white/80 hover:text-white transition-colors">Methodology</a>
       </nav>
-      <button class="theme-toggle text-white/70 hover:text-white">
-        <span class="material-symbols-outlined">dark_mode</span>
-      </button>
+      <div class="flex items-center gap-2">
+        <button class="theme-toggle text-white/70 hover:text-white">
+          <span class="material-symbols-outlined">dark_mode</span>
+        </button>
+        <button id="mobile-menu-btn" class="md:hidden text-white/70 hover:text-white">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
     </div>
   </header>
+  <div id="mobile-nav-overlay" class="hidden fixed inset-0 bg-black/40 z-40"></div>
+  <nav id="mobile-nav-drawer" class="fixed top-0 right-0 w-64 h-full bg-savannah-green text-white z-50 transform translate-x-full transition-transform duration-200 ease-in-out flex flex-col pt-16 px-6 gap-4 shadow-xl md:hidden">
+    <a href="./index.html" class="text-white/80 hover:text-white font-label-caps py-2 border-b border-white/10">Dashboard</a>
+    <a href="./counties.html" class="text-civic-gold font-label-caps py-2 border-b border-white/10">Entities</a>
+    <a href="./red-flags.html" class="text-white/80 hover:text-white font-label-caps py-2 border-b border-white/10">Red Flags</a>
+    <a href="./contract.html" class="text-white/80 hover:text-white font-label-caps py-2 border-b border-white/10">Contracts</a>
+    <a href="./reports.html" class="text-white/80 hover:text-white font-label-caps py-2 border-b border-white/10">Reports</a>
+    <a href="./methodology.html" class="text-white/80 hover:text-white font-label-caps py-2 border-b border-white/10">Methodology</a>
+  </nav>
 
   <main class="flex-1 flex flex-col md:flex-row max-w-[1280px] mx-auto w-full">
     <!-- Sidebar -->
-    <aside class="w-full md:w-[360px] border-r border-outline-variant bg-white flex flex-col shrink-0">
-      <div class="p-4 border-b border-outline-variant">
-        <h1 class="font-headline-md text-[18px] text-savannah-green mb-2">Procuring Entities</h1>
+    <aside class="w-full md:w-[320px] lg:w-[360px] md:border-r border-b md:border-b-0 border-outline-variant bg-white flex flex-col shrink-0 max-h-[40vh] md:max-h-none md:h-[calc(100vh-56px)] md:sticky md:top-14">
+      <div class="p-3 sm:p-4 border-b border-outline-variant">
+        <h1 class="font-headline-md text-[16px] sm:text-[18px] text-savannah-green mb-2">Procuring Entities</h1>
         <input id="entity-search" type="text" placeholder="Search entities…" class="w-full px-3 py-2 border border-outline-variant rounded text-sm font-body-md focus:outline-none focus:ring-2 focus:ring-primary bg-surface-container-lowest">
       </div>
       <div id="entity-list" class="flex-1 overflow-y-auto scrollbar-hide">
@@ -46,11 +60,11 @@
     </aside>
 
     <!-- Detail Panel -->
-    <section id="entity-detail" class="flex-1 overflow-y-auto bg-surface-container-lowest min-h-[70vh]">
+    <section id="entity-detail" class="flex-1 overflow-y-auto bg-surface-container-lowest min-h-[50vh] md:min-h-[70vh] p-4 sm:p-6 lg:p-8">
       <div class="flex items-center justify-center h-full text-on-surface-variant">
         <div class="text-center">
-          <span class="material-symbols-outlined text-[48px] text-outline-variant mb-2">account_balance</span>
-          <p class="font-body-md text-sm">Select an entity from the sidebar to view details</p>
+          <span class="material-symbols-outlined text-[40px] sm:text-[48px] text-outline-variant mb-2">account_balance</span>
+          <p class="font-body-md text-xs sm:text-sm">Select an entity from the list to view details</p>
         </div>
       </div>
     </section>
@@ -58,11 +72,11 @@
 
   <!-- Footer -->
   <footer class="border-t border-outline-variant bg-surface-container-low">
-    <div class="max-w-[1280px] mx-auto px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
-      <div class="text-on-surface-variant font-body-md text-sm">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
+      <div class="text-on-surface-variant font-body-md text-xs sm:text-sm text-center sm:text-left">
         <span class="font-bold text-savannah-green">Public Finance Watch</span> · Independent civic intelligence
       </div>
-      <div class="font-data-mono text-[11px] text-on-surface-variant">
+      <div class="font-data-mono text-[10px] sm:text-[11px] text-on-surface-variant">
         All data is public record under Article 35 of the Constitution of Kenya
       </div>
     </div>

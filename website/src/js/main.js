@@ -37,6 +37,44 @@ export function setupNavigation() {
   });
 }
 
+// ===== Mobile nav =====
+export function setupMobileNav() {
+  const btn = document.getElementById('mobile-menu-btn');
+  const drawer = document.getElementById('mobile-nav-drawer');
+  const overlay = document.getElementById('mobile-nav-overlay');
+  if (!btn || !drawer) return;
+
+  btn.addEventListener('click', () => {
+    const open = !drawer.classList.contains('translate-x-0');
+    if (open) {
+      drawer.classList.remove('translate-x-full');
+      drawer.classList.add('translate-x-0');
+      if (overlay) { overlay.classList.remove('hidden'); overlay.classList.add('block'); }
+    } else {
+      drawer.classList.add('translate-x-full');
+      drawer.classList.remove('translate-x-0');
+      if (overlay) { overlay.classList.add('hidden'); overlay.classList.remove('block'); }
+    }
+  });
+
+  if (overlay) {
+    overlay.addEventListener('click', () => {
+      drawer.classList.add('translate-x-full');
+      drawer.classList.remove('translate-x-0');
+      overlay.classList.add('hidden');
+      overlay.classList.remove('block');
+    });
+  }
+
+  drawer.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      drawer.classList.add('translate-x-full');
+      drawer.classList.remove('translate-x-0');
+      if (overlay) { overlay.classList.add('hidden'); overlay.classList.remove('block'); }
+    });
+  });
+}
+
 // ===== API base URL =====
 const API_BASE = window.location.hostname === 'localhost' ? 'http://localhost:8000' : '';
 
@@ -1113,6 +1151,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupAuth();
   setupDarkMode();
   setupNavigation();
+  setupMobileNav();
   fetchStats();
   setupGlobalSearch();
   renderKenyaMap();

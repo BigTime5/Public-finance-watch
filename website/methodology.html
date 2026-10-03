@@ -14,12 +14,12 @@
 
   <!-- Navigation -->
   <header class="bg-savannah-green text-white sticky top-0 z-50">
-    <div class="max-w-[1280px] mx-auto px-8 flex items-center justify-between h-14">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14">
       <a href="./index.html" class="flex items-center gap-2">
         <span class="material-symbols-outlined text-civic-gold">shield</span>
-        <span class="font-headline-md text-[18px] font-bold tracking-tight">Public Finance Watch</span>
+        <span class="font-headline-md text-[16px] sm:text-[18px] font-bold tracking-tight">Public Finance Watch</span>
       </a>
-      <nav class="hidden md:flex items-center gap-6 text-sm font-label-caps tracking-wider">
+      <nav class="hidden md:flex items-center gap-4 lg:gap-6 text-sm font-label-caps tracking-wider">
         <a href="./index.html" class="text-white/80 hover:text-white transition-colors">Dashboard</a>
         <a href="./counties.html" class="text-white/80 hover:text-white transition-colors">Entities</a>
         <a href="./red-flags.html" class="text-white/80 hover:text-white transition-colors">Red Flags</a>
@@ -27,25 +27,39 @@
         <a href="./reports.html" class="text-white/80 hover:text-white transition-colors">Reports</a>
         <a href="./methodology.html" class="text-civic-gold border-b-2 border-civic-gold pb-0.5">Methodology</a>
       </nav>
-      <button class="theme-toggle text-white/70 hover:text-white">
-        <span class="material-symbols-outlined">dark_mode</span>
-      </button>
+      <div class="flex items-center gap-2">
+        <button class="theme-toggle text-white/70 hover:text-white">
+          <span class="material-symbols-outlined">dark_mode</span>
+        </button>
+        <button id="mobile-menu-btn" class="md:hidden text-white/70 hover:text-white">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
     </div>
   </header>
+  <div id="mobile-nav-overlay" class="hidden fixed inset-0 bg-black/40 z-40"></div>
+  <nav id="mobile-nav-drawer" class="fixed top-0 right-0 w-64 h-full bg-savannah-green text-white z-50 transform translate-x-full transition-transform duration-200 ease-in-out flex flex-col pt-16 px-6 gap-4 shadow-xl md:hidden">
+    <a href="./index.html" class="text-white/80 hover:text-white font-label-caps py-2 border-b border-white/10">Dashboard</a>
+    <a href="./counties.html" class="text-white/80 hover:text-white font-label-caps py-2 border-b border-white/10">Entities</a>
+    <a href="./red-flags.html" class="text-white/80 hover:text-white font-label-caps py-2 border-b border-white/10">Red Flags</a>
+    <a href="./contract.html" class="text-white/80 hover:text-white font-label-caps py-2 border-b border-white/10">Contracts</a>
+    <a href="./reports.html" class="text-white/80 hover:text-white font-label-caps py-2 border-b border-white/10">Reports</a>
+    <a href="./methodology.html" class="text-civic-gold font-label-caps py-2 border-b border-white/10">Methodology</a>
+  </nav>
 
-  <main class="max-w-[800px] mx-auto px-8 py-12 flex-1">
-    <h1 class="font-display-lg text-display-lg text-savannah-green mb-2">Methodology</h1>
-    <p class="font-label-caps text-on-surface-variant tracking-widest mb-8">How We Follow the Money</p>
+  <main class="max-w-[800px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 flex-1">
+    <h1 class="font-display-lg text-[28px] sm:text-display-lg text-savannah-green mb-2">Methodology</h1>
+    <p class="font-label-caps text-on-surface-variant tracking-widest mb-6 sm:mb-8 text-[10px] sm:text-[11px]">How We Follow the Money</p>
 
-    <article class="prose prose-lg max-w-none space-y-8">
+    <article class="prose prose-lg max-w-none space-y-6 sm:space-y-8">
       <!-- Data Sources -->
       <section>
-        <h2 class="font-headline-md text-headline-md text-savannah-green flex items-center gap-2">
+        <h2 class="font-headline-md text-[18px] sm:text-headline-md text-savannah-green flex items-center gap-2">
           <span class="material-symbols-outlined">database</span> Data Sources
         </h2>
-        <div class="font-body-md text-on-surface space-y-3 mt-3">
+        <div class="font-body-md text-on-surface space-y-3 mt-3 text-sm sm:text-base">
           <p>All data analysed by Public Finance Watch is sourced exclusively from official Kenyan government publications and open data portals:</p>
-          <ul class="list-disc pl-6 space-y-2 text-on-surface">
+          <ul class="list-disc pl-5 sm:pl-6 space-y-2 text-on-surface">
             <li><strong>Public Procurement Regulatory Authority (PPRA)</strong> — 92,000+ procurement records including tender notices, contract awards, supplier details, and procurement methods.</li>
             <li><strong>Office of the Auditor-General (OAG)</strong> — County and national government audit reports flagging irregularities, unaccounted funds, and non-compliance with procurement law.</li>
             <li><strong>Controller of Budget (CoB)</strong> — Quarterly and annual budget implementation reports tracking actual expenditure against approved allocations.</li>
@@ -56,28 +70,28 @@
 
       <!-- Red Flag Detection -->
       <section>
-        <h2 class="font-headline-md text-headline-md text-savannah-green flex items-center gap-2">
+        <h2 class="font-headline-md text-[18px] sm:text-headline-md text-savannah-green flex items-center gap-2">
           <span class="material-symbols-outlined">flag</span> Red Flag Detection
         </h2>
-        <div class="font-body-md text-on-surface space-y-3 mt-3">
+        <div class="font-body-md text-on-surface space-y-3 mt-3 text-sm sm:text-base">
           <p>Our anomaly detection engine applies four evidence-based tests to every contract record:</p>
 
-          <div class="elevation-1 rounded p-4 space-y-4">
+          <div class="elevation-1 rounded p-3 sm:p-4 space-y-3 sm:space-y-4">
             <div>
-              <h3 class="font-label-caps text-extreme-crimson text-[12px] mb-1">1. Extreme Outlier Detection</h3>
-              <p class="text-sm">For each procuring entity, we calculate the 99th percentile of their own historical contract values. Any contract exceeding this entity-specific threshold is flagged. This avoids false positives from comparing a small county to a national ministry.</p>
+              <h3 class="font-label-caps text-extreme-crimson text-[11px] sm:text-[12px] mb-1">1. Extreme Outlier Detection</h3>
+              <p class="text-xs sm:text-sm">For each procuring entity, we calculate the 99th percentile of their own historical contract values. Any contract exceeding this entity-specific threshold is flagged.</p>
             </div>
             <div>
-              <h3 class="font-label-caps text-primary text-[12px] mb-1">2. High-Value No Competition</h3>
-              <p class="text-sm">Contracts awarded via direct procurement or single-source methods where the award value exceeds KES 5 million. The Public Procurement and Asset Disposal Act, 2015, requires competitive bidding for contracts above this threshold except in narrowly defined emergency circumstances.</p>
+              <h3 class="font-label-caps text-primary text-[11px] sm:text-[12px] mb-1">2. High-Value No Competition</h3>
+              <p class="text-xs sm:text-sm">Contracts awarded via direct procurement or single-source methods where the award value exceeds KES 5 million.</p>
             </div>
             <div>
-              <h3 class="font-label-caps text-amber-warning text-[12px] mb-1">3. Instant Contract Start</h3>
-              <p class="text-sm">Contracts where the start date is the same day as the award date (zero-day gap). This pattern is highly unusual in legitimate procurement, as contract preparation, signing, and mobilisation normally require days to weeks.</p>
+              <h3 class="font-label-caps text-amber-warning text-[11px] sm:text-[12px] mb-1">3. Instant Contract Start</h3>
+              <p class="text-xs sm:text-sm">Contracts where the start date is the same day as the award date (zero-day gap).</p>
             </div>
             <div>
-              <h3 class="font-label-caps text-dominant-orange text-[12px] mb-1">4. Non-Competitive Overuse</h3>
-              <p class="text-sm">Entities that award more than 30% of their contracts through direct procurement or restricted tendering, suggesting systematic avoidance of open competition.</p>
+              <h3 class="font-label-caps text-dominant-orange text-[11px] sm:text-[12px] mb-1">4. Non-Competitive Overuse</h3>
+              <p class="text-xs sm:text-sm">Entities that award more than 30% of their contracts through direct procurement or restricted tendering.</p>
             </div>
           </div>
         </div>
@@ -85,46 +99,46 @@
 
       <!-- NLP Analysis -->
       <section>
-        <h2 class="font-headline-md text-headline-md text-savannah-green flex items-center gap-2">
+        <h2 class="font-headline-md text-[18px] sm:text-headline-md text-savannah-green flex items-center gap-2">
           <span class="material-symbols-outlined">psychology</span> Document Intelligence
         </h2>
-        <div class="font-body-md text-on-surface space-y-3 mt-3">
+        <div class="font-body-md text-on-surface space-y-3 mt-3 text-sm sm:text-base">
           <p>Audit reports from the Auditor-General are processed using Natural Language Processing (NLP) to extract structured findings:</p>
-          <ul class="list-disc pl-6 space-y-2">
-            <li><strong>Keyword extraction</strong> — We scan for terms like "irregular", "unaccounted", "loss", "misappropriation", "pending bills", and "non-compliance" to identify paragraphs containing audit findings.</li>
-            <li><strong>Amount extraction</strong> — Monetary values cited in audit findings are parsed and standardised to KES for comparison.</li>
-            <li><strong>Officer identification</strong> — Named responsible officers and accounting officers are extracted where cited by the Auditor-General.</li>
+          <ul class="list-disc pl-5 sm:pl-6 space-y-2">
+            <li><strong>Keyword extraction</strong> — Scanning for terms like "irregular", "unaccounted", "loss", "misappropriation".</li>
+            <li><strong>Amount extraction</strong> — Monetary values cited in audit findings are parsed and standardised to KES.</li>
+            <li><strong>Officer identification</strong> — Named responsible officers are extracted where cited by the Auditor-General.</li>
           </ul>
         </div>
       </section>
 
       <!-- Evidence Standard -->
       <section>
-        <h2 class="font-headline-md text-headline-md text-savannah-green flex items-center gap-2">
+        <h2 class="font-headline-md text-[18px] sm:text-headline-md text-savannah-green flex items-center gap-2">
           <span class="material-symbols-outlined">verified</span> Evidence Standard
         </h2>
-        <div class="font-body-md text-on-surface space-y-3 mt-3">
+        <div class="font-body-md text-on-surface space-y-3 mt-3 text-sm sm:text-base">
           <p>Every red flag displayed on this platform includes:</p>
-          <ul class="list-disc pl-6 space-y-2">
+          <ul class="list-disc pl-5 sm:pl-6 space-y-2">
             <li>The specific OCID (Open Contracting ID) for traceability to PPRA source records</li>
-            <li>The exact statistical threshold that was exceeded, with the calculation methodology</li>
+            <li>The exact statistical threshold that was exceeded</li>
             <li>The number of historical contracts used to compute entity-specific benchmarks</li>
             <li>A downloadable Evidence Dossier (PDF) that consolidates all available intelligence on a supplier</li>
           </ul>
-          <p class="mt-4 p-4 bg-surface-container rounded border-l-4 border-savannah-green text-sm">
-            <strong>Editorial note:</strong> A red flag is not an accusation. It is a statistically significant anomaly that warrants further investigation by competent authorities. All thresholds are derived from the data itself, not editorial judgement.
+          <p class="mt-4 p-3 sm:p-4 bg-surface-container rounded border-l-4 border-savannah-green text-xs sm:text-sm">
+            <strong>Editorial note:</strong> A red flag is not an accusation. It is a statistically significant anomaly that warrants further investigation by competent authorities.
           </p>
         </div>
       </section>
 
       <!-- Legal Basis -->
       <section>
-        <h2 class="font-headline-md text-headline-md text-savannah-green flex items-center gap-2">
+        <h2 class="font-headline-md text-[18px] sm:text-headline-md text-savannah-green flex items-center gap-2">
           <span class="material-symbols-outlined">balance</span> Legal Basis
         </h2>
-        <div class="font-body-md text-on-surface space-y-3 mt-3">
+        <div class="font-body-md text-on-surface space-y-3 mt-3 text-sm sm:text-base">
           <p>This platform operates under the following legal framework:</p>
-          <ul class="list-disc pl-6 space-y-2">
+          <ul class="list-disc pl-5 sm:pl-6 space-y-2">
             <li><strong>Article 35, Constitution of Kenya</strong> — Right of access to information held by the State.</li>
             <li><strong>Article 201</strong> — Principles of public finance, including openness, accountability, and public participation.</li>
             <li><strong>Public Procurement and Asset Disposal Act, 2015</strong> — Mandates transparency in all procurement processes.</li>
@@ -136,12 +150,12 @@
   </main>
 
   <!-- Footer -->
-  <footer class="border-t border-outline-variant bg-surface-container-low mt-8">
-    <div class="max-w-[1280px] mx-auto px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
-      <div class="text-on-surface-variant font-body-md text-sm">
+  <footer class="border-t border-outline-variant bg-surface-container-low mt-6 sm:mt-8">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
+      <div class="text-on-surface-variant font-body-md text-xs sm:text-sm text-center sm:text-left">
         <span class="font-bold text-savannah-green">Public Finance Watch</span> · Independent civic intelligence
       </div>
-      <div class="font-data-mono text-[11px] text-on-surface-variant">
+      <div class="font-data-mono text-[10px] sm:text-[11px] text-on-surface-variant">
         All data is public record under Article 35 of the Constitution of Kenya
       </div>
     </div>

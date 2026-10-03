@@ -14,12 +14,12 @@
 
   <!-- Navigation -->
   <header class="bg-savannah-green text-white sticky top-0 z-50">
-    <div class="max-w-[1280px] mx-auto px-8 flex items-center justify-between h-14">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14">
       <a href="./index.html" class="flex items-center gap-2">
         <span class="material-symbols-outlined text-civic-gold">shield</span>
-        <span class="font-headline-md text-[18px] font-bold tracking-tight">Public Finance Watch</span>
+        <span class="font-headline-md text-[16px] sm:text-[18px] font-bold tracking-tight">Public Finance Watch</span>
       </a>
-      <nav class="hidden md:flex items-center gap-6 text-sm font-label-caps tracking-wider">
+      <nav class="hidden md:flex items-center gap-4 lg:gap-6 text-sm font-label-caps tracking-wider">
         <a href="./index.html" class="text-civic-gold border-b-2 border-civic-gold pb-0.5">Dashboard</a>
         <a href="./counties.html" class="text-white/80 hover:text-white transition-colors">Entities</a>
         <a href="./red-flags.html" class="text-white/80 hover:text-white transition-colors">Red Flags</a>
@@ -27,63 +27,79 @@
         <a href="./reports.html" class="text-white/80 hover:text-white transition-colors">Reports</a>
         <a href="./methodology.html" class="text-white/80 hover:text-white transition-colors">Methodology</a>
       </nav>
-      <button class="theme-toggle text-white/70 hover:text-white">
-        <span class="material-symbols-outlined">dark_mode</span>
-      </button>
+      <div class="flex items-center gap-2">
+        <button class="theme-toggle text-white/70 hover:text-white">
+          <span class="material-symbols-outlined">dark_mode</span>
+        </button>
+        <button id="mobile-menu-btn" class="md:hidden text-white/70 hover:text-white">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
     </div>
   </header>
+  <!-- Mobile nav overlay -->
+  <div id="mobile-nav-overlay" class="hidden fixed inset-0 bg-black/40 z-40"></div>
+  <!-- Mobile nav drawer -->
+  <nav id="mobile-nav-drawer" class="fixed top-0 right-0 w-64 h-full bg-savannah-green text-white z-50 transform translate-x-full transition-transform duration-200 ease-in-out flex flex-col pt-16 px-6 gap-4 shadow-xl md:hidden">
+    <a href="./index.html" class="text-civic-gold font-label-caps py-2 border-b border-white/10">Dashboard</a>
+    <a href="./counties.html" class="text-white/80 hover:text-white font-label-caps py-2 border-b border-white/10">Entities</a>
+    <a href="./red-flags.html" class="text-white/80 hover:text-white font-label-caps py-2 border-b border-white/10">Red Flags</a>
+    <a href="./contract.html" class="text-white/80 hover:text-white font-label-caps py-2 border-b border-white/10">Contracts</a>
+    <a href="./reports.html" class="text-white/80 hover:text-white font-label-caps py-2 border-b border-white/10">Reports</a>
+    <a href="./methodology.html" class="text-white/80 hover:text-white font-label-caps py-2 border-b border-white/10">Methodology</a>
+  </nav>
 
   <!-- Hero -->
-  <section class="bg-savannah-green text-white py-12">
-    <div class="max-w-[1280px] mx-auto px-8">
-      <p class="font-label-caps text-civic-gold tracking-widest mb-2">Kenya's Public Procurement Intelligence Platform</p>
-      <h1 class="font-display-lg text-display-lg leading-tight mb-4">Following the Money.<br>Exposing the Risk.</h1>
-      <p class="font-body-lg text-white/70 max-w-2xl mb-8">Independent analysis of 92,000+ government contracts sourced from PPRA, Auditor-General reports, and Treasury data. Evidence-based. Court-ready.</p>
+  <section class="bg-savannah-green text-white py-8 sm:py-12">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="font-label-caps text-civic-gold tracking-widest text-[10px] sm:text-[11px] mb-2">Kenya's Public Procurement Intelligence Platform</p>
+      <h1 class="font-display-lg text-[28px] sm:text-[36px] lg:text-display-lg leading-tight mb-3 sm:mb-4">Following the Money.<br>Exposing the Risk.</h1>
+      <p class="font-body-lg text-white/70 max-w-2xl mb-6 sm:mb-8 text-sm sm:text-base">Independent analysis of 92,000+ government contracts sourced from PPRA, Auditor-General reports, and Treasury data. Evidence-based. Court-ready.</p>
       <!-- Global Search -->
       <div class="flex max-w-lg">
-        <input id="global-search-input" type="text" placeholder="Search entity, supplier, or county…" class="flex-1 px-4 py-3 rounded-l text-on-surface bg-white font-body-md text-sm focus:outline-none focus:ring-2 focus:ring-civic-gold">
-        <button id="global-search-btn" class="bg-civic-gold text-savannah-green px-5 py-3 rounded-r font-label-caps text-sm font-bold hover:bg-primary-fixed-dim transition-colors flex items-center gap-1">
-          <span class="material-symbols-outlined text-[18px]">search</span> Search
+        <input id="global-search-input" type="text" placeholder="Search entity, supplier, or county…" class="flex-1 px-3 sm:px-4 py-2.5 sm:py-3 rounded-l text-on-surface bg-white font-body-md text-sm focus:outline-none focus:ring-2 focus:ring-civic-gold">
+        <button id="global-search-btn" class="bg-civic-gold text-savannah-green px-4 sm:px-5 py-2.5 sm:py-3 rounded-r font-label-caps text-sm font-bold hover:bg-primary-fixed-dim transition-colors flex items-center gap-1">
+          <span class="material-symbols-outlined text-[18px]">search</span> <span class="hidden sm:inline">Search</span>
         </button>
       </div>
     </div>
   </section>
 
   <!-- Stats Cards -->
-  <section class="max-w-[1280px] mx-auto px-8 -mt-6 relative z-10">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="elevation-2 rounded p-5">
-        <div class="font-label-caps text-on-surface-variant text-[11px] mb-1">Total Monitored Spend</div>
-        <div id="stat-total-kes" class="font-headline-lg text-headline-lg text-savannah-green">—</div>
+  <section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 -mt-4 sm:-mt-6 relative z-10">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+      <div class="elevation-2 rounded p-3 sm:p-5">
+        <div class="font-label-caps text-on-surface-variant text-[9px] sm:text-[11px] mb-1">Total Monitored Spend</div>
+        <div id="stat-total-kes" class="font-headline-lg text-[16px] sm:text-headline-lg text-savannah-green">—</div>
       </div>
-      <div class="elevation-2 rounded p-5">
-        <div class="font-label-caps text-on-surface-variant text-[11px] mb-1">Suppliers Tracked</div>
-        <div id="stat-suppliers" class="font-headline-lg text-headline-lg text-on-surface">—</div>
+      <div class="elevation-2 rounded p-3 sm:p-5">
+        <div class="font-label-caps text-on-surface-variant text-[9px] sm:text-[11px] mb-1">Suppliers Tracked</div>
+        <div id="stat-suppliers" class="font-headline-lg text-[16px] sm:text-headline-lg text-on-surface">—</div>
       </div>
-      <div class="elevation-2 rounded p-5">
-        <div class="font-label-caps text-on-surface-variant text-[11px] mb-1">Red Flags Detected</div>
-        <div id="stat-red-flags" class="font-headline-lg text-headline-lg text-extreme-crimson">—</div>
+      <div class="elevation-2 rounded p-3 sm:p-5">
+        <div class="font-label-caps text-on-surface-variant text-[9px] sm:text-[11px] mb-1">Red Flags Detected</div>
+        <div id="stat-red-flags" class="font-headline-lg text-[16px] sm:text-headline-lg text-extreme-crimson">—</div>
       </div>
-      <div class="elevation-2 rounded p-5">
-        <div class="font-label-caps text-on-surface-variant text-[11px] mb-1">Severity</div>
-        <div id="stat-high-severity" class="font-headline-lg text-headline-lg text-dominant-orange">—</div>
+      <div class="elevation-2 rounded p-3 sm:p-5">
+        <div class="font-label-caps text-on-surface-variant text-[9px] sm:text-[11px] mb-1">Severity</div>
+        <div id="stat-high-severity" class="font-headline-lg text-[16px] sm:text-headline-lg text-dominant-orange">—</div>
       </div>
     </div>
   </section>
 
   <!-- Map + Quick Links -->
-  <section class="max-w-[1280px] mx-auto px-8 py-12">
-    <div class="grid lg:grid-cols-3 gap-8">
+  <section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
       <!-- Map -->
-      <div class="lg:col-span-2 elevation-1 rounded p-6">
-        <h2 class="font-headline-md text-headline-md text-savannah-green mb-1">County Risk Map</h2>
-        <p class="font-body-md text-sm text-on-surface-variant mb-4">Click any county to view its red flags. Colour intensity reflects risk level.</p>
+      <div class="lg:col-span-2 elevation-1 rounded p-4 sm:p-6">
+        <h2 class="font-headline-md text-[16px] sm:text-headline-md text-savannah-green mb-1">County Risk Map</h2>
+        <p class="font-body-md text-xs sm:text-sm text-on-surface-variant mb-4">Click any county to view its red flags. Colour intensity reflects risk level.</p>
         <div class="relative">
-          <div id="kenya-map-container" class="w-full min-h-[400px] flex items-center justify-center text-on-surface-variant">
+          <div id="kenya-map-container" class="w-full min-h-[280px] sm:min-h-[400px] flex items-center justify-center text-on-surface-variant">
             Loading map…
           </div>
           <!-- Tooltip -->
-          <div id="map-tooltip" class="absolute bg-white border border-outline-variant rounded shadow-lg p-3 pointer-events-none z-20 w-[220px]" style="display:none; opacity:0; transition: opacity 0.15s ease;">
+          <div id="map-tooltip" class="absolute bg-white border border-outline-variant rounded shadow-lg p-3 pointer-events-none z-20 w-[200px] sm:w-[220px]" style="display:none; opacity:0; transition: opacity 0.15s ease;">
             <div id="tooltip-county" class="font-headline-md text-sm text-savannah-green font-bold mb-1"></div>
             <div class="flex justify-between text-[12px]">
               <span class="text-on-surface-variant">Spend:</span>
@@ -96,7 +112,7 @@
           </div>
         </div>
         <!-- Legend -->
-        <div class="flex items-center gap-4 mt-4 text-[11px] font-label-caps text-on-surface-variant">
+        <div class="flex flex-wrap items-center gap-3 sm:gap-4 mt-4 text-[10px] sm:text-[11px] font-label-caps text-on-surface-variant">
           <div class="flex items-center gap-1"><span class="w-3 h-3 rounded-sm" style="background:#C4EBE0"></span> Safe</div>
           <div class="flex items-center gap-1"><span class="w-3 h-3 rounded-sm" style="background:#FFDDAF"></span> Low Risk</div>
           <div class="flex items-center gap-1"><span class="w-3 h-3 rounded-sm" style="background:#FFB366"></span> Medium Risk</div>
@@ -104,34 +120,34 @@
         </div>
       </div>
       <!-- Quick Links -->
-      <div class="space-y-4">
-        <a href="./red-flags.html" class="block elevation-2 rounded p-5 hover:border-extreme-crimson transition-colors group">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="material-symbols-outlined text-extreme-crimson">flag</span>
-            <span class="font-label-caps text-on-surface-variant">Red Flags Register</span>
+      <div class="grid grid-cols-2 lg:grid-cols-1 gap-3 sm:gap-4">
+        <a href="./red-flags.html" class="block elevation-2 rounded p-4 sm:p-5 hover:border-extreme-crimson transition-colors group">
+          <div class="flex items-center gap-2 mb-1 sm:mb-2">
+            <span class="material-symbols-outlined text-extreme-crimson text-[20px] sm:text-[24px]">flag</span>
+            <span class="font-label-caps text-on-surface-variant text-[10px] sm:text-[11px]">Red Flags Register</span>
           </div>
-          <p class="font-body-md text-sm text-on-surface">Browse all detected procurement anomalies with evidence trails.</p>
+          <p class="font-body-md text-xs sm:text-sm text-on-surface hidden sm:block">Browse all detected procurement anomalies with evidence trails.</p>
         </a>
-        <a href="./counties.html" class="block elevation-2 rounded p-5 hover:border-savannah-green transition-colors group">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="material-symbols-outlined text-savannah-green">account_balance</span>
-            <span class="font-label-caps text-on-surface-variant">Entity Profiles</span>
+        <a href="./counties.html" class="block elevation-2 rounded p-4 sm:p-5 hover:border-savannah-green transition-colors group">
+          <div class="flex items-center gap-2 mb-1 sm:mb-2">
+            <span class="material-symbols-outlined text-savannah-green text-[20px] sm:text-[24px]">account_balance</span>
+            <span class="font-label-caps text-on-surface-variant text-[10px] sm:text-[11px]">Entity Profiles</span>
           </div>
-          <p class="font-body-md text-sm text-on-surface">Deep-dive into county and national government spending patterns.</p>
+          <p class="font-body-md text-xs sm:text-sm text-on-surface hidden sm:block">Deep-dive into county and national government spending patterns.</p>
         </a>
-        <a href="./contract.html" class="block elevation-2 rounded p-5 hover:border-primary transition-colors group">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="material-symbols-outlined text-primary">receipt_long</span>
-            <span class="font-label-caps text-on-surface-variant">Contract Explorer</span>
+        <a href="./contract.html" class="block elevation-2 rounded p-4 sm:p-5 hover:border-primary transition-colors group">
+          <div class="flex items-center gap-2 mb-1 sm:mb-2">
+            <span class="material-symbols-outlined text-primary text-[20px] sm:text-[24px]">receipt_long</span>
+            <span class="font-label-caps text-on-surface-variant text-[10px] sm:text-[11px]">Contract Explorer</span>
           </div>
-          <p class="font-body-md text-sm text-on-surface">Search and inspect 92,000+ individual procurement records.</p>
+          <p class="font-body-md text-xs sm:text-sm text-on-surface hidden sm:block">Search and inspect 92,000+ individual procurement records.</p>
         </a>
-        <a href="./reports.html" class="block elevation-2 rounded p-5 hover:border-civic-gold transition-colors group">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="material-symbols-outlined text-civic-gold">description</span>
-            <span class="font-label-caps text-on-surface-variant">Source Documents</span>
+        <a href="./reports.html" class="block elevation-2 rounded p-4 sm:p-5 hover:border-civic-gold transition-colors group">
+          <div class="flex items-center gap-2 mb-1 sm:mb-2">
+            <span class="material-symbols-outlined text-civic-gold text-[20px] sm:text-[24px]">description</span>
+            <span class="font-label-caps text-on-surface-variant text-[10px] sm:text-[11px]">Source Documents</span>
           </div>
-          <p class="font-body-md text-sm text-on-surface">Access OAG audit reports, CoB budget reviews, and Treasury releases.</p>
+          <p class="font-body-md text-xs sm:text-sm text-on-surface hidden sm:block">Access OAG audit reports, CoB budget reviews, and Treasury releases.</p>
         </a>
       </div>
     </div>
@@ -139,11 +155,11 @@
 
   <!-- Footer -->
   <footer class="mt-auto border-t border-outline-variant bg-surface-container-low">
-    <div class="max-w-[1280px] mx-auto px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
-      <div class="text-on-surface-variant font-body-md text-sm">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
+      <div class="text-on-surface-variant font-body-md text-xs sm:text-sm text-center sm:text-left">
         <span class="font-bold text-savannah-green">Public Finance Watch</span> · Independent civic intelligence · Data sourced from PPRA, OAG, National Treasury
       </div>
-      <div class="font-data-mono text-[11px] text-on-surface-variant">
+      <div class="font-data-mono text-[10px] sm:text-[11px] text-on-surface-variant">
         All data is public record under Article 35 of the Constitution of Kenya
       </div>
     </div>

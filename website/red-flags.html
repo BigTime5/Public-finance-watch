@@ -14,12 +14,12 @@
 
   <!-- Navigation -->
   <header class="bg-savannah-green text-white sticky top-0 z-50">
-    <div class="max-w-[1280px] mx-auto px-8 flex items-center justify-between h-14">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14">
       <a href="./index.html" class="flex items-center gap-2">
         <span class="material-symbols-outlined text-civic-gold">shield</span>
-        <span class="font-headline-md text-[18px] font-bold tracking-tight">Public Finance Watch</span>
+        <span class="font-headline-md text-[16px] sm:text-[18px] font-bold tracking-tight">Public Finance Watch</span>
       </a>
-      <nav class="hidden md:flex items-center gap-6 text-sm font-label-caps tracking-wider">
+      <nav class="hidden md:flex items-center gap-4 lg:gap-6 text-sm font-label-caps tracking-wider">
         <a href="./index.html" class="text-white/80 hover:text-white transition-colors">Dashboard</a>
         <a href="./counties.html" class="text-white/80 hover:text-white transition-colors">Entities</a>
         <a href="./red-flags.html" class="text-civic-gold border-b-2 border-civic-gold pb-0.5">Red Flags</a>
@@ -27,38 +27,52 @@
         <a href="./reports.html" class="text-white/80 hover:text-white transition-colors">Reports</a>
         <a href="./methodology.html" class="text-white/80 hover:text-white transition-colors">Methodology</a>
       </nav>
-      <button class="theme-toggle text-white/70 hover:text-white">
-        <span class="material-symbols-outlined">dark_mode</span>
-      </button>
+      <div class="flex items-center gap-2">
+        <button class="theme-toggle text-white/70 hover:text-white">
+          <span class="material-symbols-outlined">dark_mode</span>
+        </button>
+        <button id="mobile-menu-btn" class="md:hidden text-white/70 hover:text-white">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
     </div>
   </header>
+  <div id="mobile-nav-overlay" class="hidden fixed inset-0 bg-black/40 z-40"></div>
+  <nav id="mobile-nav-drawer" class="fixed top-0 right-0 w-64 h-full bg-savannah-green text-white z-50 transform translate-x-full transition-transform duration-200 ease-in-out flex flex-col pt-16 px-6 gap-4 shadow-xl md:hidden">
+    <a href="./index.html" class="text-white/80 hover:text-white font-label-caps py-2 border-b border-white/10">Dashboard</a>
+    <a href="./counties.html" class="text-white/80 hover:text-white font-label-caps py-2 border-b border-white/10">Entities</a>
+    <a href="./red-flags.html" class="text-civic-gold font-label-caps py-2 border-b border-white/10">Red Flags</a>
+    <a href="./contract.html" class="text-white/80 hover:text-white font-label-caps py-2 border-b border-white/10">Contracts</a>
+    <a href="./reports.html" class="text-white/80 hover:text-white font-label-caps py-2 border-b border-white/10">Reports</a>
+    <a href="./methodology.html" class="text-white/80 hover:text-white font-label-caps py-2 border-b border-white/10">Methodology</a>
+  </nav>
 
-  <main class="max-w-[1280px] mx-auto px-8 py-8 flex-1 w-full">
+  <main class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 flex-1 w-full">
     <!-- Page Header -->
-    <div class="mb-6">
-      <h1 class="font-headline-lg text-headline-lg text-savannah-green mb-1">Red Flags Register</h1>
-      <p class="font-body-md text-sm text-on-surface-variant">Procurement anomalies detected through statistical analysis of PPRA contract data, OAG audit findings, and pattern recognition.</p>
+    <div class="mb-4 sm:mb-6">
+      <h1 class="font-headline-lg text-[22px] sm:text-headline-lg text-savannah-green mb-1">Red Flags Register</h1>
+      <p class="font-body-md text-xs sm:text-sm text-on-surface-variant">Procurement anomalies detected through statistical analysis of PPRA contract data, OAG audit findings, and pattern recognition.</p>
     </div>
 
     <!-- Filters -->
-    <div class="elevation-1 rounded p-4 mb-6">
-      <div class="flex flex-wrap items-end gap-4">
+    <div class="elevation-1 rounded p-3 sm:p-4 mb-4 sm:mb-6">
+      <div class="flex flex-col sm:flex-row sm:flex-wrap sm:items-end gap-3 sm:gap-4">
         <!-- Search -->
-        <div class="flex-1 min-w-[200px]">
+        <div class="flex-1 min-w-0 sm:min-w-[200px]">
           <label class="font-label-caps text-[11px] text-on-surface-variant block mb-1">Search Entity / Supplier / OCID</label>
           <input id="filter-entity" type="text" placeholder="e.g. Nairobi, AFRICAN TOUCH…" class="w-full px-3 py-2 border border-outline-variant rounded text-sm font-body-md focus:outline-none focus:ring-2 focus:ring-primary bg-white">
         </div>
         <!-- Jurisdiction -->
-        <div class="min-w-[180px]">
+        <div class="sm:min-w-[180px]">
           <label class="font-label-caps text-[11px] text-on-surface-variant block mb-1">Region</label>
           <select id="filter-jurisdiction" class="w-full px-3 py-2 border border-outline-variant rounded text-sm font-body-md focus:outline-none focus:ring-2 focus:ring-primary bg-white">
             <option value="">All Regions</option>
           </select>
         </div>
         <!-- Category checkboxes -->
-        <div class="min-w-[200px]">
+        <div class="sm:min-w-[200px]">
           <label class="font-label-caps text-[11px] text-on-surface-variant block mb-1">Flag Type</label>
-          <div class="flex flex-wrap gap-x-3 gap-y-1 text-[12px]">
+          <div class="flex flex-wrap gap-x-3 gap-y-1 text-[11px] sm:text-[12px]">
             <label class="flex items-center gap-1 cursor-pointer"><input type="checkbox" class="flag-category-cb accent-extreme-crimson" value="EXTREME_OUTLIER"><span>Outlier</span></label>
             <label class="flex items-center gap-1 cursor-pointer"><input type="checkbox" class="flag-category-cb accent-primary" value="HIGH_VALUE_NO_COMPETITION"><span>No Competition</span></label>
             <label class="flex items-center gap-1 cursor-pointer"><input type="checkbox" class="flag-category-cb accent-amber-warning" value="INSTANT_CONTRACT_START"><span>Instant Start</span></label>
@@ -66,30 +80,30 @@
           </div>
         </div>
         <!-- Apply -->
-        <button id="apply-filters-btn" class="bg-savannah-green text-white px-5 py-2 rounded font-label-caps text-sm hover:bg-savannah-green/90 transition-colors flex items-center gap-1">
+        <button id="apply-filters-btn" class="w-full sm:w-auto bg-savannah-green text-white px-5 py-2 rounded font-label-caps text-sm hover:bg-savannah-green/90 transition-colors flex items-center justify-center gap-1">
           <span class="material-symbols-outlined text-[16px]">filter_list</span> Apply
         </button>
       </div>
     </div>
 
     <!-- Results count -->
-    <div class="flex justify-between items-center mb-3">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1 mb-3">
       <div id="red-flags-count" class="font-body-md text-sm text-on-surface-variant">Loading…</div>
-      <div id="pagination-info" class="font-data-mono text-[12px] text-on-surface-variant"></div>
+      <div id="pagination-info" class="font-data-mono text-[11px] sm:text-[12px] text-on-surface-variant"></div>
     </div>
 
     <!-- Table -->
-    <div class="elevation-1 rounded overflow-x-auto">
-      <table class="w-full text-sm">
+    <div class="elevation-1 rounded overflow-x-auto -mx-4 sm:mx-0">
+      <table class="w-full text-xs sm:text-sm min-w-[640px]">
         <thead>
           <tr class="border-b-2 border-savannah-green/20 bg-surface-container-low">
-            <th class="py-3 px-4 text-center font-label-caps text-[11px] text-on-surface-variant w-12">Type</th>
-            <th class="py-3 px-4 text-left font-label-caps text-[11px] text-on-surface-variant">Contract / OCID</th>
-            <th class="py-3 px-4 text-left font-label-caps text-[11px] text-on-surface-variant">Entity</th>
-            <th class="py-3 px-4 text-left font-label-caps text-[11px] text-on-surface-variant">Supplier</th>
-            <th class="py-3 px-4 text-right font-label-caps text-[11px] text-on-surface-variant">Award (KES)</th>
-            <th class="py-3 px-4 text-left font-label-caps text-[11px] text-on-surface-variant">Description</th>
-            <th class="py-3 px-4 text-center font-label-caps text-[11px] text-on-surface-variant w-12">PDF</th>
+            <th class="py-2 sm:py-3 px-3 sm:px-4 text-center font-label-caps text-[10px] sm:text-[11px] text-on-surface-variant w-12">Type</th>
+            <th class="py-2 sm:py-3 px-3 sm:px-4 text-left font-label-caps text-[10px] sm:text-[11px] text-on-surface-variant">Contract / OCID</th>
+            <th class="py-2 sm:py-3 px-3 sm:px-4 text-left font-label-caps text-[10px] sm:text-[11px] text-on-surface-variant">Entity</th>
+            <th class="py-2 sm:py-3 px-3 sm:px-4 text-left font-label-caps text-[10px] sm:text-[11px] text-on-surface-variant">Supplier</th>
+            <th class="py-2 sm:py-3 px-3 sm:px-4 text-right font-label-caps text-[10px] sm:text-[11px] text-on-surface-variant">Award (KES)</th>
+            <th class="py-2 sm:py-3 px-3 sm:px-4 text-left font-label-caps text-[10px] sm:text-[11px] text-on-surface-variant">Description</th>
+            <th class="py-2 sm:py-3 px-3 sm:px-4 text-center font-label-caps text-[10px] sm:text-[11px] text-on-surface-variant w-12">PDF</th>
           </tr>
         </thead>
         <tbody id="red-flags-tbody">
@@ -107,11 +121,11 @@
 
   <!-- Footer -->
   <footer class="border-t border-outline-variant bg-surface-container-low">
-    <div class="max-w-[1280px] mx-auto px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
-      <div class="text-on-surface-variant font-body-md text-sm">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
+      <div class="text-on-surface-variant font-body-md text-xs sm:text-sm text-center sm:text-left">
         <span class="font-bold text-savannah-green">Public Finance Watch</span> · Independent civic intelligence
       </div>
-      <div class="font-data-mono text-[11px] text-on-surface-variant">
+      <div class="font-data-mono text-[10px] sm:text-[11px] text-on-surface-variant">
         All data is public record under Article 35 of the Constitution of Kenya
       </div>
     </div>
