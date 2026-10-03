@@ -42,23 +42,7 @@ const API_BASE = window.location.hostname === 'localhost' ? 'http://localhost:80
 
 // ===== Authentication Logic =====
 export function setupAuth() {
-    const loginModal = document.getElementById('login-modal');
-    
-                
-                if (res.ok) {
-                    const data = await res.json();
-                    localStorage.setItem('auth_token', data.access_token);
-                    loginModal.classList.add('hidden');
-                    window.location.reload(); // reload to fetch data
-                } else {
-                    loginError.classList.remove('hidden');
-                }
-            } catch (err) {
-                console.error("Login error", err);
-                loginError.classList.remove('hidden');
-            }
-        });
-    }
+    // Auth removed
 }
 
 // Intercept all fetch requests to add the Authorization header
