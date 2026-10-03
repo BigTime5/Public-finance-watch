@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports — Public Finance Watch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  <link rel="stylesheet" href="./src/styles/base.css">
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+
+  <!-- Navigation -->
+  <header class="bg-savannah-green text-white sticky top-0 z-50">
+    <div class="max-w-[1280px] mx-auto px-8 flex items-center justify-between h-14">
+      <a href="./index.html" class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-civic-gold">shield</span>
+        <span class="font-headline-md text-[18px] font-bold tracking-tight">Public Finance Watch</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-label-caps tracking-wider">
+        <a href="./index.html" class="text-white/80 hover:text-white transition-colors">Dashboard</a>
+        <a href="./counties.html" class="text-white/80 hover:text-white transition-colors">Entities</a>
+        <a href="./red-flags.html" class="text-white/80 hover:text-white transition-colors">Red Flags</a>
+        <a href="./contract.html" class="text-white/80 hover:text-white transition-colors">Contracts</a>
+        <a href="./reports.html" class="text-civic-gold border-b-2 border-civic-gold pb-0.5">Reports</a>
+        <a href="./methodology.html" class="text-white/80 hover:text-white transition-colors">Methodology</a>
+      </nav>
+      <button class="theme-toggle text-white/70 hover:text-white">
+        <span class="material-symbols-outlined">dark_mode</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="max-w-[1280px] mx-auto px-8 py-8 flex-1 w-full">
+    <div class="mb-8">
+      <h1 class="font-headline-lg text-headline-lg text-savannah-green mb-1">Source Documents</h1>
+      <p class="font-body-md text-sm text-on-surface-variant">Primary source reports from Kenya's oversight institutions. All documents are public record.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-8">
+      <!-- OAG Reports -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-extreme-crimson">gavel</span>
+          <h2 class="font-headline-md text-[18px] text-savannah-green">Auditor-General (OAG)</h2>
+        </div>
+        <p class="font-body-md text-[13px] text-on-surface-variant mb-4">County and national government audit reports identifying irregularities, losses, and non-compliance.</p>
+        <div id="oag-reports-list" class="space-y-2 max-h-[60vh] overflow-y-auto pr-1">
+          <div class="p-4 text-on-surface-variant text-sm">Loading OAG reports…</div>
+        </div>
+      </div>
+
+      <!-- CoB Reports -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-civic-gold">account_balance</span>
+          <h2 class="font-headline-md text-[18px] text-savannah-green">Controller of Budget (CoB)</h2>
+        </div>
+        <p class="font-body-md text-[13px] text-on-surface-variant mb-4">Quarterly and annual budget implementation reports tracking government expenditure against approved allocations.</p>
+        <div id="cob-reports-list" class="space-y-2 max-h-[60vh] overflow-y-auto pr-1">
+          <div class="p-4 text-on-surface-variant text-sm">Loading CoB reports…</div>
+        </div>
+      </div>
+
+      <!-- Treasury Reports -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary">payments</span>
+          <h2 class="font-headline-md text-[18px] text-savannah-green">National Treasury</h2>
+        </div>
+        <p class="font-body-md text-[13px] text-on-surface-variant mb-4">Budget estimates, revenue allocations, debt reports, and fiscal strategy papers from the National Treasury.</p>
+        <div id="treasury-reports-list" class="space-y-2 max-h-[60vh] overflow-y-auto pr-1">
+          <div class="p-4 text-on-surface-variant text-sm">Loading Treasury documents…</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-outline-variant bg-surface-container-low mt-8">
+    <div class="max-w-[1280px] mx-auto px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="text-on-surface-variant font-body-md text-sm">
+        <span class="font-bold text-savannah-green">Public Finance Watch</span> · Independent civic intelligence
+      </div>
+      <div class="font-data-mono text-[11px] text-on-surface-variant">
+        All data is public record under Article 35 of the Constitution of Kenya
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./src/js/main.js"></script>
+</body>
+</html>

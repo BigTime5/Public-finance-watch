@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Public Finance Watch — Kenya</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  <link rel="stylesheet" href="./src/styles/base.css">
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+
+  <!-- Navigation -->
+  <header class="bg-savannah-green text-white sticky top-0 z-50">
+    <div class="max-w-[1280px] mx-auto px-8 flex items-center justify-between h-14">
+      <a href="./index.html" class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-civic-gold">shield</span>
+        <span class="font-headline-md text-[18px] font-bold tracking-tight">Public Finance Watch</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-label-caps tracking-wider">
+        <a href="./index.html" class="text-civic-gold border-b-2 border-civic-gold pb-0.5">Dashboard</a>
+        <a href="./counties.html" class="text-white/80 hover:text-white transition-colors">Entities</a>
+        <a href="./red-flags.html" class="text-white/80 hover:text-white transition-colors">Red Flags</a>
+        <a href="./contract.html" class="text-white/80 hover:text-white transition-colors">Contracts</a>
+        <a href="./reports.html" class="text-white/80 hover:text-white transition-colors">Reports</a>
+        <a href="./methodology.html" class="text-white/80 hover:text-white transition-colors">Methodology</a>
+      </nav>
+      <button class="theme-toggle text-white/70 hover:text-white">
+        <span class="material-symbols-outlined">dark_mode</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-savannah-green text-white py-12">
+    <div class="max-w-[1280px] mx-auto px-8">
+      <p class="font-label-caps text-civic-gold tracking-widest mb-2">Kenya's Public Procurement Intelligence Platform</p>
+      <h1 class="font-display-lg text-display-lg leading-tight mb-4">Following the Money.<br>Exposing the Risk.</h1>
+      <p class="font-body-lg text-white/70 max-w-2xl mb-8">Independent analysis of 92,000+ government contracts sourced from PPRA, Auditor-General reports, and Treasury data. Evidence-based. Court-ready.</p>
+      <!-- Global Search -->
+      <div class="flex max-w-lg">
+        <input id="global-search-input" type="text" placeholder="Search entity, supplier, or county…" class="flex-1 px-4 py-3 rounded-l text-on-surface bg-white font-body-md text-sm focus:outline-none focus:ring-2 focus:ring-civic-gold">
+        <button id="global-search-btn" class="bg-civic-gold text-savannah-green px-5 py-3 rounded-r font-label-caps text-sm font-bold hover:bg-primary-fixed-dim transition-colors flex items-center gap-1">
+          <span class="material-symbols-outlined text-[18px]">search</span> Search
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Cards -->
+  <section class="max-w-[1280px] mx-auto px-8 -mt-6 relative z-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="elevation-2 rounded p-5">
+        <div class="font-label-caps text-on-surface-variant text-[11px] mb-1">Total Monitored Spend</div>
+        <div id="stat-total-kes" class="font-headline-lg text-headline-lg text-savannah-green">—</div>
+      </div>
+      <div class="elevation-2 rounded p-5">
+        <div class="font-label-caps text-on-surface-variant text-[11px] mb-1">Suppliers Tracked</div>
+        <div id="stat-suppliers" class="font-headline-lg text-headline-lg text-on-surface">—</div>
+      </div>
+      <div class="elevation-2 rounded p-5">
+        <div class="font-label-caps text-on-surface-variant text-[11px] mb-1">Red Flags Detected</div>
+        <div id="stat-red-flags" class="font-headline-lg text-headline-lg text-extreme-crimson">—</div>
+      </div>
+      <div class="elevation-2 rounded p-5">
+        <div class="font-label-caps text-on-surface-variant text-[11px] mb-1">Severity</div>
+        <div id="stat-high-severity" class="font-headline-lg text-headline-lg text-dominant-orange">—</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map + Quick Links -->
+  <section class="max-w-[1280px] mx-auto px-8 py-12">
+    <div class="grid lg:grid-cols-3 gap-8">
+      <!-- Map -->
+      <div class="lg:col-span-2 elevation-1 rounded p-6">
+        <h2 class="font-headline-md text-headline-md text-savannah-green mb-1">County Risk Map</h2>
+        <p class="font-body-md text-sm text-on-surface-variant mb-4">Click any county to view its red flags. Colour intensity reflects risk level.</p>
+        <div class="relative">
+          <div id="kenya-map-container" class="w-full min-h-[400px] flex items-center justify-center text-on-surface-variant">
+            Loading map…
+          </div>
+          <!-- Tooltip -->
+          <div id="map-tooltip" class="absolute bg-white border border-outline-variant rounded shadow-lg p-3 pointer-events-none z-20 w-[220px]" style="display:none; opacity:0; transition: opacity 0.15s ease;">
+            <div id="tooltip-county" class="font-headline-md text-sm text-savannah-green font-bold mb-1"></div>
+            <div class="flex justify-between text-[12px]">
+              <span class="text-on-surface-variant">Spend:</span>
+              <span id="tooltip-spend" class="font-data-mono text-on-surface font-bold">—</span>
+            </div>
+            <div class="flex justify-between text-[12px]">
+              <span class="text-on-surface-variant">Red Flags:</span>
+              <span id="tooltip-flags" class="font-data-mono text-extreme-crimson font-bold">—</span>
+            </div>
+          </div>
+        </div>
+        <!-- Legend -->
+        <div class="flex items-center gap-4 mt-4 text-[11px] font-label-caps text-on-surface-variant">
+          <div class="flex items-center gap-1"><span class="w-3 h-3 rounded-sm" style="background:#C4EBE0"></span> Safe</div>
+          <div class="flex items-center gap-1"><span class="w-3 h-3 rounded-sm" style="background:#FFDDAF"></span> Low Risk</div>
+          <div class="flex items-center gap-1"><span class="w-3 h-3 rounded-sm" style="background:#FFB366"></span> Medium Risk</div>
+          <div class="flex items-center gap-1"><span class="w-3 h-3 rounded-sm" style="background:#D44040"></span> High Risk</div>
+        </div>
+      </div>
+      <!-- Quick Links -->
+      <div class="space-y-4">
+        <a href="./red-flags.html" class="block elevation-2 rounded p-5 hover:border-extreme-crimson transition-colors group">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="material-symbols-outlined text-extreme-crimson">flag</span>
+            <span class="font-label-caps text-on-surface-variant">Red Flags Register</span>
+          </div>
+          <p class="font-body-md text-sm text-on-surface">Browse all detected procurement anomalies with evidence trails.</p>
+        </a>
+        <a href="./counties.html" class="block elevation-2 rounded p-5 hover:border-savannah-green transition-colors group">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="material-symbols-outlined text-savannah-green">account_balance</span>
+            <span class="font-label-caps text-on-surface-variant">Entity Profiles</span>
+          </div>
+          <p class="font-body-md text-sm text-on-surface">Deep-dive into county and national government spending patterns.</p>
+        </a>
+        <a href="./contract.html" class="block elevation-2 rounded p-5 hover:border-primary transition-colors group">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="material-symbols-outlined text-primary">receipt_long</span>
+            <span class="font-label-caps text-on-surface-variant">Contract Explorer</span>
+          </div>
+          <p class="font-body-md text-sm text-on-surface">Search and inspect 92,000+ individual procurement records.</p>
+        </a>
+        <a href="./reports.html" class="block elevation-2 rounded p-5 hover:border-civic-gold transition-colors group">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="material-symbols-outlined text-civic-gold">description</span>
+            <span class="font-label-caps text-on-surface-variant">Source Documents</span>
+          </div>
+          <p class="font-body-md text-sm text-on-surface">Access OAG audit reports, CoB budget reviews, and Treasury releases.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="mt-auto border-t border-outline-variant bg-surface-container-low">
+    <div class="max-w-[1280px] mx-auto px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="text-on-surface-variant font-body-md text-sm">
+        <span class="font-bold text-savannah-green">Public Finance Watch</span> · Independent civic intelligence · Data sourced from PPRA, OAG, National Treasury
+      </div>
+      <div class="font-data-mono text-[11px] text-on-surface-variant">
+        All data is public record under Article 35 of the Constitution of Kenya
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./src/js/main.js"></script>
+</body>
+</html>
